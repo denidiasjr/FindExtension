@@ -20,6 +20,21 @@ class CopyExtension:
         self.destFiles = []
         self.recursive = False
 
+    # Print help message
+    def help(self):
+        print '\nUsage: copyext -ext EXTENSION -s SOURCE'
+        print '   or: copyext -ext EXTENSION -s SOURCE -d DESTINATION'
+        print 'Copy file with the selected extension from source to destination.\n'
+        print 'Mandatory arguments to long options are mandatory for short options too.'
+        print '   -d                             set the destination directory'
+        print '   -ext                           set extension for the files you want to copy'
+        print '   -s                             set the source directory you want to copy'
+        print '   -r or --recursive              set copyext to copy all files recursively'
+        print '   -m                             map all files with the selected extension'
+        print '   -help                          display this help and exit'
+        print 'If you want to contribute with this project, fork it on GitHub :)'
+        print 'Link: https://github.com/denidiasjr/copy-extension\n'
+
     # Setters
     def setSource(self, source):
         if not os.path.exists(source) or not os.path.isdir(source):

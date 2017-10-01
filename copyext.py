@@ -13,6 +13,13 @@ from CopyExtension import CopyExtension
 indexExtension = -1
 indexSource = -1
 
+copyExtension = CopyExtension()
+
+# Capture help message
+if '--help' in sys.argv or '-h' in sys.argv:
+    copyExtension.help()
+    sys.exit()
+
 # Check extension
 if '-ext' in sys.argv:
     indexExtension = sys.argv.index('-ext')
@@ -26,8 +33,6 @@ if '-s' in sys.argv:
 else:
     print 'ERROR: Source not set'
     sys.exit()
-
-copyExtension = CopyExtension()
 
 # Check index extension
 if indexExtension == -1 or (indexExtension+1) >= len(sys.argv):
