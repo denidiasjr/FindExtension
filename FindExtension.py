@@ -14,7 +14,7 @@ import shutil
 class FindExtension:
     
     def __init__(self):
-        self._extensions = []
+        self._extensions = None
         self._source = None
 
     def help(self):
@@ -27,6 +27,31 @@ class FindExtension:
         print 'If you want to contribute with this project, fork it on GitHub :)'
         print 'Repository: https://github.com/denidiasjr/FindExtension\n'
 
+    def getFileSize(self, path):
+        
+        # Check if path parameter exists
+        if not os.path.exists(path):
+            print "Ops! File path not exists"
+            return "ERROR"
+        
+        # Get file size in bytes
+        size_bytes = os.path.getsize(path)
+        len_size = len(str(size_bytes))
+
+        # Check file length and convert it
+        if len_size <= 3:
+            return str(size_bytes) + " Bytes" 
+        if len_size >= 4 and len_size < 7 :
+            return '{:.2f}'.format(size_bytes/1000.0) + ' KB'
+        elif len_size >= 7 and len_size < 10:
+            return '{:.2f}'.format(size_bytes/1000000.0) + ' MB'
+        elif len_size >= 10 and len_size < 13:
+            return '{:.2f}'.format(size_bytes/1000000000.0) + ' GB'
+        elif len_size >= 13:
+            return '{:.2f}'.format(size_bytes/1000000000000.0) + ' TB'
+
+        return "ERROR"
+
     def setExtensions(self, extensions):
         self._extensions = extensions
 
@@ -37,7 +62,12 @@ class FindExtension:
         self._source = source
 
     def search(self):
-        
+
+        # Check if extensions is set
+        if self._extensions == None:
+            print "Ops! Extensions not set"
+            sys.exit()
+
         # Set current folder as source, if its not set
         if self._source == None:
             self._source = os.getcwd()
@@ -56,5 +86,9 @@ class FindExtension:
                     if not fileFolder.endswith(extension):
                         continue
 
+                    # Get absolute path of file
+                    file = files[0] + "/" + fileFolder
+
                     # Print where the file is
-                    print files[0] + "/" + fileFolder
+                    print file + " (" + self.getFileSize(file) + ")"
+
