@@ -1,3 +1,5 @@
 .vscode
 script_copy.sh
+control
 *.pyc
+*.spec
