@@ -10,12 +10,19 @@
 import sys
 import os
 import shutil
+import time
 
 class FindExtension:
     
+    BACKSLASH = ''
+
     def __init__(self):
         self._extensions = None
         self._source = None
+        if os.name == 'posix':
+            self.BACKSLASH = '/'
+        else:
+            self.BACKSLASH = '\\'
 
     def help(self):
         print '\nJust a simple way to find files by extension. Thanks for enjoy it!'
@@ -72,6 +79,8 @@ class FindExtension:
         if self._source == None:
             self._source = os.getcwd()
 
+        print 'Searching...'
+
         # files[0] represents all the folder inside the one passed by parameter
         # files[2] represents all files inside the folders
         for files in os.walk(self._source):
@@ -87,8 +96,10 @@ class FindExtension:
                         continue
 
                     # Get absolute path of file
-                    file = files[0] + "/" + fileFolder
+                    file = files[0] + self.BACKSLASH + fileFolder
 
                     # Print where the file is
                     print file + " (" + self.getFileSize(file) + ")"
+        
+        print 'Finish search!'
 
