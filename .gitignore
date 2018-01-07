@@ -1,5 +1,6 @@
 .vscode
 script_copy.sh
+/findext
 control
 *.pyc
 *.spec
