@@ -101,5 +101,5 @@ class FindExtension:
                     # Print where the file is
                     print file + " (" + self.getFileSize(file) + ")"
         
-        print 'Finish search!'
+        print 'Search finished!'
 
