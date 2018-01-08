@@ -1,6 +1,6 @@
 # FindExtension
 
-Just a simple way to find files in your computer by extension.
+Just a simple way to find files in your computer by extension 🙂
 
 ```python
 
@@ -15,4 +15,4 @@ findext mp3,mp4 -s /your/folder
 
 ```
 
-Under development 🙂
+If you like this project and feel good to contribute with, fork this!
