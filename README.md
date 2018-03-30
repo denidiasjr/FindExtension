@@ -2,16 +2,18 @@
 
 Just a simple way to find files in your computer by extension 🙂
 
-```python
+Available for Windows and Linux!
+
+```shell
 
 # Search in the current folder
-findext iso,cue,rar
+$ findext iso,cue,rar
 
 # Search into the entire computer
-findext png,bmp,jpg -a
+$ findext png,bmp,jpg -a
 
 # Search in selected folder
-findext mp3,mp4 -s /your/folder
+$ findext mp3,mp4 -s /your/folder
 
 ```
 
